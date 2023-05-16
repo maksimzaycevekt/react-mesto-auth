@@ -115,13 +115,16 @@ function App() {
   //при монтировании запрашивает данные пользователя с сервера
   //передаёт их в стейт currentUser
   useEffect(() => {
+    if (!isloggedIn) {
+      return;
+    }
     api
       .getInfoUser()
       .then((info) => {
         setСurrentUser(info);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [isloggedIn]);
 
   //при монтировании запрашивает карточки с сервера
   useEffect(() => {
@@ -131,7 +134,7 @@ function App() {
         setCards(cards);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [isloggedIn]);
 
   //слушатели для попапов
   function handleEditAvatarClick() {
@@ -219,10 +222,10 @@ function App() {
 
   //отвечает за удаление карточек по клику на урну
   function handleDeliteCard(id) {
+    const cardUpdate = cards.filter((card) => card._id !== id);
     api
       .deleteCard(id)
       .then(() => {
-        const cardUpdate = cards.filter((card) => card._id !== id);
         setCards(cardUpdate);
       })
       .catch((err) => console.log(err));

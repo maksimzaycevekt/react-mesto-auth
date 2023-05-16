@@ -3,6 +3,7 @@ import Login from "../components/Login";
 import { Link } from "react-router-dom";
 import logo from "../images/header-logo.svg";
 import InfoTooltip from "../components/InfoTooltip";
+import imageStatus from "../images/image-status.png";
 
 const LoginPage = ({
   isloggedIn,
@@ -24,7 +25,12 @@ const LoginPage = ({
         </Link>
       </header>
       <Login loginUser={loginUser} errorMessage={errorMessage} />
-      <InfoTooltip onClose={onClose} isOpen={isOpen} />
+      <InfoTooltip
+        onClose={onClose}
+        isOpen={isOpen}
+        textStatus={"Вы успешно зарегистрировались!"}
+        imageStatus={imageStatus}
+      />
     </>
   );
 };

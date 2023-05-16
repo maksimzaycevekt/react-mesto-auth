@@ -2,14 +2,15 @@ import React from "react";
 import Register from "../components/Register";
 import { Link } from "react-router-dom";
 import logo from "../images/header-logo.svg";
-import InfoTooltipError from "../components/InfoTooltipError";
+import InfoTooltip from "../components/InfoTooltip";
+import imageStatusError from "../images/image-status-error.png";
 
 const RegistrationPage = ({
   isloggedIn,
   registerUser,
   errorMessage,
-  onClose,
   isOpen,
+  onClose,
 }) => {
   return (
     <>
@@ -24,7 +25,12 @@ const RegistrationPage = ({
         </Link>
       </header>
       <Register registerUser={registerUser} errorMessage={errorMessage} />
-      <InfoTooltipError onClose={onClose} isOpen={isOpen} />
+      <InfoTooltip
+        onClose={onClose}
+        isOpen={isOpen}
+        textStatus={"Что-то пошло не так! Попробуйте ещё раз."}
+        imageStatus={imageStatusError}
+      />
     </>
   );
 };

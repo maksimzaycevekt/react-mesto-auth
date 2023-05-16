@@ -1,7 +1,6 @@
 import React from "react";
-import imageStatus from "../images/image-status.png";
 
-const InfoTooltip = ({ onClose, isOpen }) => {
+const InfoTooltip = ({ onClose, isOpen, textStatus, imageStatus }) => {
   return (
     <div className={`popup ${isOpen ? "popup_opened" : ""}`}>
       <div className="popup__container popup_type_tooltip">
@@ -17,7 +16,7 @@ const InfoTooltip = ({ onClose, isOpen }) => {
           src={imageStatus}
           alt="Здесь показан статус регистрации"
         ></img>
-        <p className="popup__text-status">Вы успешно зарегистрировались!</p>
+        <p className="popup__text-status">{textStatus}</p>
       </div>
     </div>
   );

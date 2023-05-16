@@ -23,7 +23,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   function handleSubmit(e) {
     // Запрещаем браузеру переходить по адресу формы
@@ -42,44 +42,34 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      children={
-        <>
-          <input
-            className="popup__input popup__input_type_name"
-            id="input-profile-name"
-            type="text"
-            name="popup_name"
-            minLength="2"
-            maxLength="40"
-            required
-            value={name || ""}
-            onChange={handleChangeName}
-          />
-          <span className="popup__input-error input-profile-name-error"></span>
+      buttonSubmitName={"Сохранить"}
+    >
+      <input
+        className="popup__input popup__input_type_name"
+        id="input-profile-name"
+        type="text"
+        name="popup_name"
+        minLength="2"
+        maxLength="40"
+        required
+        value={name || ""}
+        onChange={handleChangeName}
+      />
+      <span className="popup__input-error input-profile-name-error"></span>
 
-          <input
-            className="popup__input popup__input_type_job"
-            id="input-profile-job"
-            type="text"
-            name="popup_job"
-            minLength="2"
-            maxLength="200"
-            required
-            value={description || ""}
-            onChange={handleChangeDescription}
-          />
-          <span className="popup__input-error input-profile-job-error"></span>
-
-          <button
-            className="popup__button"
-            id="profile-save-button"
-            type="submit"
-          >
-            Сохранить
-          </button>
-        </>
-      }
-    />
+      <input
+        className="popup__input popup__input_type_job"
+        id="input-profile-job"
+        type="text"
+        name="popup_job"
+        minLength="2"
+        maxLength="200"
+        required
+        value={description || ""}
+        onChange={handleChangeDescription}
+      />
+      <span className="popup__input-error input-profile-job-error"></span>
+    </PopupWithForm>
   );
 }
 
