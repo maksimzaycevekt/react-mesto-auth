@@ -1,0 +1,7 @@
+.popup_type_tooltip {
+  display: flex;
+
+  align-items: center;
+  width: 430px;
+  height: 330px;
+}
