@@ -222,11 +222,10 @@ function App() {
 
   //отвечает за удаление карточек по клику на урну
   function handleDeliteCard(id) {
-    const cardUpdate = cards.filter((card) => card._id !== id);
     api
       .deleteCard(id)
       .then(() => {
-        setCards(cardUpdate);
+        setCards((cards) => cards.filter((card) => card._id !== id));
       })
       .catch((err) => console.log(err));
   }
